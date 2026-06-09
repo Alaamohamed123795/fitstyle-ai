@@ -1,0 +1,32 @@
+[
+  {
+    "id": "prod-cas-blouse",
+    "name": "Cream Silk Bow-Neck Blouse",
+    "category": "top",
+    "colour": "Cream",
+    "occasion": "Casual",
+    "size": "S, M, L, XL",
+    "price": 110,
+    "image": "/src/assets/images/cream_bow_blouse.png"
+  },
+  {
+    "id": "prod-cas-trousers",
+    "name": "Olive Green Wide-Leg Trousers",
+    "category": "bottom",
+    "colour": "Olive Green",
+    "occasion": "Casual",
+    "size": "S, M, L",
+    "price": 95,
+    "image": "/src/assets/images/olive_wide_pants.png"
+  },
+  {
+    "id": "prod-cas-polka-dress",
+    "name": "Polka Dot Bustier Dress",
+    "category": "top",
+    "colour": "Black & White",
+    "occasion": "Casual",
+    "size": "XS, S, M, L",
+    "price": 125,
+    "image": "/src/assets/images/polka_dot_dress.png"
+  }
+]
