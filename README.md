@@ -1,6 +1,6 @@
 # FitStyle AI 👗✨
 
-> An AI-powered fashion styling platform that helps shoppers find personalized outfit recommendations based on occasion, body type, and personal style — powered by Google Gemini AI and Firebase.
+> An AI-powered fashion styling platform that helps shoppers find personalized outfit recommendations based on occasion, body type, and personal style — powered by a multi-model AI pipeline (Qwen2.5-VL, Google Gemma, Groq/Llama, and Kolors) and Firebase.
 
 ---
 
@@ -29,7 +29,7 @@ FitStyle AI is a full-stack web application that bridges the gap between boutiqu
 
 | Feature | Description |
 |---|---|
-| 🤖 AI Outfit Recommendations | Powered by Google Gemini API |
+| 🤖 AI Outfit Recommendations | Powered by  Groq (Llama-3.3-70B) |
 | 👗 Virtual Fitting Studio | Try on outfits virtually using pose detection |
 | 📸 Admin Photo Upload | Upload garment photos to Firebase Storage |
 | 🎉 Occasion-Based Filtering | Filter products by Wedding, Formal, Casual, Party |
@@ -55,7 +55,10 @@ FitStyle AI is a full-stack web application that bridges the gap between boutiqu
 - TypeScript (`tsx` for dev)
 
 **AI & External Services:**
-- Google Gemini API (`@google/genai`)
+- Qwen2.5-VL-72B via OpenRouter (body shape & measurement analysis)
+- Google Gemma (gemma-3-4b-it) (clothing size computation)
+- Groq — Llama-3.3-70B (outfit recommendation & styling engine)
+- Kolors Virtual Try-On via Hugging Face Spaces (photorealistic try-on rendering)
 - Firebase Authentication
 - Firebase Firestore (database)
 - Firebase Storage (photo storage)
@@ -71,7 +74,9 @@ Make sure you have the following installed before running the project:
 - **Node.js** v18 or higher → [Download](https://nodejs.org/)
 - **npm** v9 or higher (comes with Node.js)
 - A **Firebase project** with Firestore and Storage enabled
-- A **Google Gemini API key** → [Get one here](https://aistudio.google.com/app/apikey)
+- An **OpenRouter API key** (for Qwen2.5-VL body analysis) → [Get one here](https://openrouter.ai/)
+- A **Groq API key** (for outfit recommendations) → [Get one here](https://console.groq.com/)
+- A **Google Gemma API key** (for size calculation) → [Get one here](https://aistudio.google.com/app/apikey)
 
 ---
 
@@ -116,8 +121,10 @@ Then open `.env` and add your credentials (see [Environment Variables](#environm
 Create a `.env` file in the root directory with the following variables:
 
 ```env
-# Google Gemini AI
-GEMINI_API_KEY=your_gemini_api_key_here
+# AI Model APIs
+VITE_OPENROUTER_API_KEY=your_openrouter_api_key_here
+VITE_GROQ_API_KEY=your_groq_api_key_here
+VITE_GEMMA_API_KEY=your_gemma_api_key_here
 
 # Firebase Configuration
 VITE_FIREBASE_API_KEY=your_firebase_api_key
@@ -233,7 +240,10 @@ fitstyle-ai/
 | vite | ^6.2.3 | Build tool & dev server |
 | express | ^4.21.2 | Backend server |
 | firebase | ^12.14.0 | Auth, Firestore, Storage |
-| @google/genai | ^2.4.0 | Gemini AI API |
+|openrouter (Qwen2.5-VL)| free tier | Body shape & skin tone analysis |
+|Google Gemma (gemma-3-4b-it)|free tier|Clothing size calculation|
+|Groq (Llama-3.3-70B)| free tier |Outfit & styling recommendation|
+|Kolors (Hugging Face)|free, no key|Virtual try-on rendering|
 | @tensorflow/tfjs | ^4.22.0 | Machine learning |
 | @tensorflow-models/posenet | ^2.2.2 | Pose detection |
 | tailwindcss | ^4.1.14 | CSS styling |
